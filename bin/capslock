@@ -3,7 +3,4 @@
 
 # caps lock status
 capslock=$(xset q | grep "Caps Lock:" | awk '{print $4}')
-
-
-
-printf "Caps:$capslock"
+[[ "$capslock" == "on" ]] && echo "ABC" || echo "abc"

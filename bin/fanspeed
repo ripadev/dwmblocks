@@ -1,6 +1,6 @@
 #!/bin/bash
 # get fan speed
-
+<<comment
 speed=$(cat /proc/acpi/ibm/fan | grep level | head -n 1 | awk '{print $2}')
 
 if [ "$speed" = "auto" ]; then
@@ -11,3 +11,5 @@ else
 	echo " $speed"
 fi
 fi
+comment
+echo "$(cat /sys/class/hwmon/hwmon5/fan1_input)RPM"

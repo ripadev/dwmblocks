@@ -6,4 +6,4 @@
 backlight=$(ls /sys/class/backlight/)
 brightness=$(($(cat /sys/class/backlight/$backlight/brightness) * 100 / $(cat /sys/class/backlight/$backlight/max_brightness)))
 
-echo "*$brightness"
+echo "☀$brightness%"
