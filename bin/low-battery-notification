@@ -10,7 +10,7 @@ battery_capacity=$(cat /sys/class/power_supply/BAT0/capacity)
 threshold_capacity=15
 
 
-[ "$battery_capacity" -le $threshold_capacity ] && [ "$battery_status0" != "Charging" ] || [ "$battery_status1" != "Charging" ] && notify-send -u critical -i battery-low "Battery Low" "Battery level is ${battery_capacity}% Status: ${battery_status1}" --icon=dialog-information
+ [ "$battery_status0" != "Charging" ] || [ "$battery_status1" != "Charging" ] && [ "$battery_capacity" -le $threshold_capacity ] && notify-send -u critical -i battery-low "Battery Low" "Battery level is ${battery_capacity}% Status: ${battery_status1}" --icon=dialog-information
 
 
 
