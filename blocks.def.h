@@ -2,8 +2,8 @@
 static const Block blocks[] = {
 	/*Icon*/	/*Command*/	/*Update Interval*/	/*Update Signal*/
 	{"",		"~/.local/bin/internet",	5,	4},
-	{"",		"~/.local/bin/volume",		10,	10},
-	{"",		"~/.local/bin/brightness",	10,	11},
+	{"",		"~/.local/bin/volume",		300,	10},
+	{"",		"~/.local/bin/brightness",	300,	11},
 	{"",		"~/.local/bin/memory",		10,	14},
 	{"",		"~/.local/bin/fanspeed",	5,	12},
 	{"",		"~/.local/bin/cpu",		10,	18},
