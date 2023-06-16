@@ -2,8 +2,6 @@
 # display current brightness
 
 # get first two digits of brightness value
-
-backlight=$(ls /sys/class/backlight/)
-brightness=$(($(cat /sys/class/backlight/$backlight/brightness) * 100 / $(cat /sys/class/backlight/$backlight/max_brightness)))
+brightness="$(echo "$(brightnessctl | grep "Current" | awk '{print $4}' | sed 's/[^0-9]*//g')")"
 
 echo "☀$brightness%"
