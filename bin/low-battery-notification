@@ -1,16 +1,15 @@
+
 #!/bin/bash
 
 # Get status and capacity of batteries
-battery_status0=$(cat /sys/class/power_supply/BAT0/status)
-battery_status1=$(cat /sys/class/power_supply/BAT1/status)
-
-battery_capacity=$(cat /sys/class/power_supply/BAT0/capacity)
+battery_info=$(acpi -b)
+battery_capacity=$(echo "$battery_info" | grep -P -o '[0-9]+(?=%)' | head -n 1)
+battery_status=$(echo "$battery_info" | grep -o 'Charging\|Discharging')
 
 # Capacity threshold for sending notification
-threshold_capacity=15
+threshold_capacity=20
 
-
- [ "$battery_status0" != "Charging" ] || [ "$battery_status1" != "Charging" ] && [ "$battery_capacity" -le $threshold_capacity ] && notify-send -u critical -i battery-low "Battery Low" "Battery level is ${battery_capacity}% Status: ${battery_status1}" --icon=dialog-information
-
-
-
+# Check if battery is discharging and capacity is below threshold
+if [[ "$battery_status" = "Discharging" && "$battery_capacity" -le "$threshold_capacity" ]]; then
+    dunstify -u critical -i battery-low "Battery Low" "Battery level is ${battery_capacity}%"
+fi
