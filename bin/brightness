@@ -4,4 +4,4 @@
 # get first two digits of brightness value
 brightness="$(echo "$(brightnessctl | grep "Current" | awk '{print $4}' | sed 's/[^0-9]*//g')")"
 
-echo "☀$brightness%"
+echo "🔆$brightness%"

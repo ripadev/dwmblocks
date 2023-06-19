@@ -1,4 +1,13 @@
 #!/bin/sh
 
 percent=$(amixer sget Master | tail -1 | awk '{print $5}' | sed 's/[^0-9]*\([0-9]\+\).*/\1/')
-echo "🔊$percent%"
+
+if [ $percent -le 10 ]
+then
+	echo "🔈$percent%"
+elif [ $percent -le 35 ]
+then
+	echo "🔉$percent%"
+else
+	echo "🔊$percent%"
+fi
